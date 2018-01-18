@@ -43,6 +43,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
             <main class="mdl-layout__content">
                 <div class="page-content">
+                    <?php echo shell_exec("pwd");?>
                     <?php foreach ($dirs as $value) { ?>
                         <div class="my-mdl-card mdl-card mdl-shadow--2dp">
                             <div class="mdl-card__title">
