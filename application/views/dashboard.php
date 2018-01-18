@@ -44,7 +44,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <main class="mdl-layout__content">
                 <div class="page-content">
                     <?php
-                        echo $arr."<br>";
+                        echo $arr[0]."<br>";
                         foreach ($arr as $value)
                         {
                             echo $value . "<br>";
