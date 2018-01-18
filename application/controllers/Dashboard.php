@@ -6,8 +6,12 @@ class Dashboard extends CI_Controller {
 	public function index()
 	{
 		$this->load->helper('url');
-		$res = shell_exec("ls /");
-		$data['arr'] = explode("\n" ,$res);
+		$path = "/";
+		$dirs = shell_exec("ls ".$path);
+		foreach ($dirs as $val) {
+						
+		}
+		$data['dirs'] = explode("\n" ,$dirs);
 		$this->load->view('dashboard', $data);
 	}
 }
