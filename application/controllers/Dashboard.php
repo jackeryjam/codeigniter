@@ -6,6 +6,8 @@ class Dashboard extends CI_Controller {
 	public function index()
 	{
 		$this->load->helper('url');
-		$this->load->view('dashboard');
+		$res = shell_exec("ls /");
+		$data['arr'] = explode(" ",$res);
+		$this->load->view('dashboard', $data);
 	}
 }

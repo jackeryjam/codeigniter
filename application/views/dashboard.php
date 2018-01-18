@@ -43,24 +43,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
             <main class="mdl-layout__content">
                 <div class="page-content">
+                    <?php
+                        foreach ($arr as $value)
+                        {
+                            echo $value . "<br>";
+                        }
+                    ?>
                     <div class="my-mdl-card mdl-card mdl-shadow--2dp">
-                    <div class="mdl-card__title">
-                        <h2 class="mdl-card__title-text">Centos7</h2>
-                    </div>
-                    <div class="mdl-card__supporting-text">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Mauris sagittis pellentesque lacus eleifend lacinia...
-                    </div>
-                    <div class="flex-right mdl-card__actions mdl-card--border">
-                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-                            设置为默认
-                        </button>
-                    </div>
-                    <div class="mdl-card__menu">
-                        <span class="mdl-chip">
-                            <span class="mdl-chip__text">默认安装该系统</span>
-                        </span>
-                    </div>
+                        <div class="mdl-card__title">
+                            <h2 class="mdl-card__title-text">Centos7</h2>
+                        </div>
+                        <div class="mdl-card__supporting-text">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Mauris sagittis pellentesque lacus eleifend lacinia...
+                        </div>
+                        <div class="flex-right mdl-card__actions mdl-card--border">
+                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                                设置为默认
+                            </button>
+                        </div>
+                        <div class="mdl-card__menu">
+                            <span class="mdl-chip">
+                                <span class="mdl-chip__text">默认安装该系统</span>
+                            </span>
+                        </div>
                     </div>
 
                 </div>
