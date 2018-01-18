@@ -7,7 +7,7 @@ class Dashboard extends CI_Controller {
 	{
 		$this->load->helper('url');
 		$res = shell_exec("ls /");
-		$data['arr'] = split("\t",$res);
+		$data['arr'] = explode("\t" ,$res);
 		$this->load->view('dashboard', $data);
 	}
 }
