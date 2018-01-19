@@ -1,6 +1,6 @@
 <main class="mdl-layout__content">
     <div class="page-content">
-        <?php echo shell_exec("pwd");?>
+        <?php print_r($systemlist); ?>
         <?php foreach ($dirs as $item): ?>
             <div class="my-mdl-card mdl-card mdl-shadow--2dp">
                 <div class="mdl-card__title">

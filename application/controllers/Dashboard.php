@@ -5,7 +5,7 @@ class Dashboard extends CI_Controller {
 	public function __construct()
     {
         parent::__construct();
-        $this->load->model('Dashboard');
+        $this->load->model('Systems');
 		$this->load->helper('url');
     }
 
@@ -14,6 +14,7 @@ class Dashboard extends CI_Controller {
 		$path = "/";
 		$dirs = shell_exec("ls ".$path);
 		$data['dirs'] = explode("\n" ,$dirs);
+		$data['systemlist'] = $this->Systems->list();
 		$this->load->view('dashboard/header');
 		$this->load->view('dashboard/sidenav');
 		$this->load->view('dashboard/main', $data);
