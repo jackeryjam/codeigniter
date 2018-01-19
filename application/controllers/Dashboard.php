@@ -9,6 +9,8 @@ class Dashboard extends CI_Controller {
 		$path = "/";
 		$dirs = shell_exec("ls ".$path);
 		$data['dirs'] = explode("\n" ,$dirs);
-		$this->load->view('dashboard', $data);
+		$this->load->view('dashboard/header');
+		$this->load->view('dashboard/main', $data);
+		$this->load->view('dashboard/footer');
 	}
 }
