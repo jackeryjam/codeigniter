@@ -19,7 +19,6 @@ class Systems extends CI_Model {
         $res = array();
         $dirs = $this->listDir();
         foreach ($dirs as $dirname) {
-            var $item;
             $item->name = $dirname;
             $item->isDefault = $default == $dirname ? true : false;
             $item->desc = "描述";
