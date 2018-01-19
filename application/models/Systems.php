@@ -21,7 +21,7 @@ class Systems extends CI_Model {
             $item = array();
             $item['name'] = $dirname;
             $item['isDefault'] = $default == $dirname ? true : false;
-            $item['desc'] = "描述";
+            $item['desc'] = "描述"; 
             array_push($res,$item);
         }
         return $res;
