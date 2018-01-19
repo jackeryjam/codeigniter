@@ -10,6 +10,7 @@ class Dashboard extends CI_Controller {
 		$dirs = shell_exec("ls ".$path);
 		$data['dirs'] = explode("\n" ,$dirs);
 		$this->load->view('dashboard/header');
+		$this->load->view('dashboard/sidenav');
 		$this->load->view('dashboard/main', $data);
 		$this->load->view('dashboard/footer');
 	}

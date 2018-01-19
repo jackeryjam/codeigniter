@@ -11,8 +11,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     </head>
     <body>
-        <!-- The drawer is always open in large screens. The header is always shown,
-        even in small screens. -->
         <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
                     mdl-layout--fixed-header">
             <header class="mdl-layout__header">
@@ -32,12 +30,3 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
                 </div>
             </header>
-            <div class="mdl-layout__drawer">
-                <span class="mdl-layout-title">dashboard</span>
-                <nav class="mdl-navigation">
-                <a class="mdl-navigation__link" href="">Link</a>
-                <a class="mdl-navigation__link" href="">Link</a>
-                <a class="mdl-navigation__link" href="">Link</a>
-                <a class="mdl-navigation__link" href="">Link</a>
-                </nav>
-            </div>
