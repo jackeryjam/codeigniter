@@ -7,6 +7,7 @@
                     <h2 class="mdl-card__title-text"><?=$item->name?></h2>
                 </div>
                 <div class="mdl-card__supporting-text">
+                    <?php print_r($item); ?>
                     <?=$item->desc?>
                 </div>
                 <div class="flex-right mdl-card__actions mdl-card--border">
