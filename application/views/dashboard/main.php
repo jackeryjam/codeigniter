@@ -1,14 +1,13 @@
 <main class="mdl-layout__content">
     <div class="page-content">
         <?php print_r($systemlist); ?>
-        <?php foreach ($dirs as $item): ?>
+        <?php foreach ($systemlist as $item): ?>
             <div class="my-mdl-card mdl-card mdl-shadow--2dp">
                 <div class="mdl-card__title">
-                    <h2 class="mdl-card__title-text"><?=$item?></h2>
+                    <h2 class="mdl-card__title-text"><?=$item->name?></h2>
                 </div>
                 <div class="mdl-card__supporting-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Mauris sagittis pellentesque lacus eleifend lacinia...
+                    <?=$item->desc?>
                 </div>
                 <div class="flex-right mdl-card__actions mdl-card--border">
                     <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
