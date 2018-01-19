@@ -14,17 +14,11 @@ class Systems extends CI_Model {
         $res = explode("\n" ,$dirs);
         return $res;
     }
-    
-    class SysItem {
-        public $name = "";
-        public $isDefault  = false;
-        public $desc = "描述";
-    }
     public function listSystems(){
         $res = array();
         $dirs = $this->listDir();
         foreach ($dirs as $dirname) {
-            $item = new SysItem();
+            $item = array();
             $item->name = $dirname;
             $item->isDefault = $default == $dirname ? true : false;
             $item->desc = "描述";
