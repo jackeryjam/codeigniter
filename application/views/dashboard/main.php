@@ -1,10 +1,10 @@
 <main class="mdl-layout__content">
     <div class="page-content">
         <?php echo shell_exec("pwd");?>
-        <?php foreach ($dirs as $value) { ?>
+        <?php foreach ($dirs as $item): ?>
             <div class="my-mdl-card mdl-card mdl-shadow--2dp">
                 <div class="mdl-card__title">
-                    <h2 class="mdl-card__title-text"><?php echo $value;?></h2>
+                    <h2 class="mdl-card__title-text"><?=$item?></h2>
                 </div>
                 <div class="mdl-card__supporting-text">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -21,7 +21,7 @@
                     </span>
                 </div>
             </div>
-        <?php } ?>
+        <?php endforeach; ?>
     </div>
 </main>
 
