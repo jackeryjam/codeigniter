@@ -20,7 +20,12 @@ class Systems extends CI_Model {
         foreach ($dirs as $dirname) {
             $item = array();
             $item['name'] = $dirname;
-            $item['isDefault'] = true;
+            if($dirname == $default){
+                $item['isDefault'] = true;
+            }
+            else{
+                $item['isDefault'] = false;
+            }
             $item['desc'] = "描述"; 
             array_push($res,$item);
         }
