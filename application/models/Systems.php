@@ -15,7 +15,7 @@ class Systems extends CI_Model {
         return $res;
     }
 
-    public function list(){
+    public function listSystems(){
         $res = array();
         $dirs = $this->listDir();
         foreach ($dirs as $dirname) {

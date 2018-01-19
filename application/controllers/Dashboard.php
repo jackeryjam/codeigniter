@@ -14,7 +14,7 @@ class Dashboard extends CI_Controller {
 		$path = "/";
 		$dirs = shell_exec("ls ".$path);
 		$data['dirs'] = explode("\n" ,$dirs);
-		$data['systemlist'] = $this->Systems->list();
+		$data['systemlist'] = $this->Systems->listSystems();
 		$this->load->view('dashboard/header');
 		$this->load->view('dashboard/sidenav');
 		$this->load->view('dashboard/main', $data);
