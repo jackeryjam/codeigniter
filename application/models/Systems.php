@@ -23,6 +23,7 @@ class Systems extends CI_Model {
         foreach ($dirs as $dirname) {
             $item = array();
             $item['name'] = $dirname;
+            $item['isDefault'] = false;
             if($dirname == $this->default){
                 $item['isDefault'] = true;
             }
