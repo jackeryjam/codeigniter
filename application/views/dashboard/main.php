@@ -4,6 +4,7 @@
             $a = "/var/ftp/pub";
             $str = "ls ".$a;
             echo $str."<br>";
+            echo shell_exec($str)."<br>";
         ?>
         <?php foreach ($systemlist as $item): ?>
             <div class="my-mdl-card mdl-card mdl-shadow--2dp">
