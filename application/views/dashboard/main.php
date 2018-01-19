@@ -14,7 +14,7 @@
                         <span class="mdl-chip">
                             <span class="mdl-chip__text">默认安装该系统</span>
                         </span>
-                    <?php else if; ?>
+                    <?php else: ?>
                         <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
                             设置为默认
                         </button>
