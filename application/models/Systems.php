@@ -1,4 +1,9 @@
 <?php
+class SysItem {
+    public $name = "";
+    public $isDefault  = false;
+    public $desc = "描述";
+}
 class Systems extends CI_Model {
     public $ftp_root = "/var/ftp/pub";
     public $default = "centos7";
@@ -14,12 +19,7 @@ class Systems extends CI_Model {
         $res = explode("\n" ,$dirs);
         return $res;
     }
-    
-    class SysItem {
-        public $name = "";
-        public $isDefault  = false;
-        public $desc = "描述";
-    }
+
     public function listSystems(){
         $res = new SysItem();
         $dirs = $this->listDir();
