@@ -6,14 +6,13 @@ class Systems extends CI_Model {
     public function __construct()
     {
         parent::__construct();
-        $ftp_root = "/var/ftp/pub";
-        $default = "centos7";
+        $this->ftp_root = "/var/ftp/pub";
+        $this->default = "centos7";
         // Your own constructor code
     }
 
     public function listDir() {
-        $str = "ls ".$ftp_root;
-        $dirs = shell_exec($str);
+        $dirs = shell_exec("ls ".$this->ftp_root);
         $res = explode("\n" ,$dirs);
         return $res;
     }
@@ -23,7 +22,7 @@ class Systems extends CI_Model {
         foreach ($dirs as $dirname) {
             $item = array();
             $item['name'] = $dirname;
-            if($dirname == $default){
+            if($dirname == $this->efault){
                 $item['isDefault'] = true;
             }
             else{
