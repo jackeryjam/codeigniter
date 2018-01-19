@@ -1,11 +1,13 @@
 <?php
 class Systems extends CI_Model {
-    public $ftp_root = "/var/ftp/pub";
-    public $default = "centos7";
+    public $ftp_root;
+    public $default;
 
     public function __construct()
     {
         parent::__construct();
+        $ftp_root = "/var/ftp/pub";
+        $default = "centos7";
         // Your own constructor code
     }
 
