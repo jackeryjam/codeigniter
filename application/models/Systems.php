@@ -10,7 +10,7 @@ class Systems extends CI_Model {
     }
 
     public function listDir() {
-        $dirs = shell_exec("ls ".$ftp_root);
+        $dirs = shell_exec("ls /var/ftp/pub");
         $res = explode("\n" ,$dirs);
         return $res;
     }
