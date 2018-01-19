@@ -16,9 +16,11 @@
                     </button>
                 </div>
                 <div class="mdl-card__menu">
-                    <span class="mdl-chip">
-                        <span class="mdl-chip__text">默认安装该系统</span>
-                    </span>
+                    <?php if ($item["isDefault"] === TRUE): ?>
+                        <span class="mdl-chip">
+                            <span class="mdl-chip__text">默认安装该系统</span>
+                        </span>
+                    <?php endif; ?>
                 </div>
             </div>
         <?php endforeach; ?>
