@@ -10,15 +10,14 @@
                     <?=$item["desc"]?>
                 </div>
                 <div class="flex-right mdl-card__actions mdl-card--border">
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-                        设置为默认
-                    </button>
-                </div>
-                <div class="mdl-card__menu">
                     <?php if ($item["isDefault"] === TRUE): ?>
                         <span class="mdl-chip">
                             <span class="mdl-chip__text">默认安装该系统</span>
                         </span>
+                    <?php else if; ?>
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                            设置为默认
+                        </button>
                     <?php endif; ?>
                 </div>
             </div>
