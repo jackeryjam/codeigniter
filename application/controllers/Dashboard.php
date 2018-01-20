@@ -19,6 +19,10 @@ class Dashboard extends CI_Controller {
 		$this->load->view('dashboard/sidenav');
 		$this->load->view('dashboard/main', $data);
 		$this->load->view('dashboard/footer');
-		
+	}
+
+	public function setDefaultAs($system_name)
+	{
+		echo $system_name;
 	}
 }
