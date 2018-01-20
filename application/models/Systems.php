@@ -16,11 +16,11 @@ class Systems extends CI_Model {
         echo $test;
         echo strlen($test);
         $str = "ls ".$this->ftp_root;
-        $dirs = shell_exec($str);
+        $_dirs = shell_exec($str);
         //把最后的一个换行符去掉，否则界面会多显示一个的
-        echo $dirs;
-        $dirs = substr($dirs, strlen($dirs)-1);
-        echo strlen($dirs);
+        echo $_dirs;
+        echo strlen($_dirs);
+        $dirs = substr($dirs, strlen($_ssdirs)-1);
         echo $dirs;
         $res = explode("\n" ,$dirs);
         return $res;
@@ -38,6 +38,7 @@ class Systems extends CI_Model {
                 $item['isDefault'] = FALSE;
             }
             $item['desc'] = "描述"; 
+            if()
             array_push($res,$item);
         }
         return $res;
