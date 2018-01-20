@@ -37,8 +37,7 @@ class Systems extends CI_Model {
             else{
                 $item['isDefault'] = FALSE;
             }
-            $item['desc'] = "描述"; 
-            if()
+            $item['desc'] = "描述";
             array_push($res,$item);
         }
         return $res;
