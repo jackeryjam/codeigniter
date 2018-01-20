@@ -15,7 +15,7 @@
                             <span class="mdl-chip__text">默认安装该系统</span>
                         </span>
                     <?php else: ?>
-                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="setDefault(<?=$item["name"]?>">
                             设置为默认
                         </button>
                     <?php endif; ?>
@@ -25,7 +25,13 @@
     </div>
 </main>
 
-<style>
+<script type="text/javascript">
+    function setDefault($name){
+        window.navigate(<?=base_url()?>+"index.php/dashboard/setDefaultAs/"+$name);
+    }    
+</script>
+
+<style type="text/css">
     .page-content{
         padding: 20px 50px;
     }
