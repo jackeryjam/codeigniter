@@ -41,7 +41,7 @@ class Systems extends CI_Model {
     }
     
     public function changeDefault($systemName){
-        $file=fopen($this->pxelinuxcfg + "default","w+")  or exit("无法打开文件!");
+        $file=fopen($this->pxelinuxcfg."default","w+")  or exit("无法打开文件!");
         $default = "";
         while(!feof($file))
         {
