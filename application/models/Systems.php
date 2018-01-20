@@ -2,12 +2,14 @@
 class Systems extends CI_Model {
     public $ftp_root;
     public $default;
+    public $pxelinuxcfg;
 
     public function __construct()
     {
         parent::__construct();
         $this->ftp_root = "/var/ftp/pub";
         $this->default = "centos7";
+        $this->pxelinuxcfg = "/var/lib/tftpboot/pxelinux.cfg/";
         // Your own constructor code
     }
 
@@ -19,6 +21,7 @@ class Systems extends CI_Model {
         $res = explode("\n" ,$dirs);
         return $res;
     }
+
     public function listSystems(){
         $res = array();
         $dirs = $this->listDir();
@@ -35,5 +38,15 @@ class Systems extends CI_Model {
             array_push($res,$item);
         }
         return $res;
+    }
+    
+    public function changeDefault($systemName){
+        $file=fopen($this->pxelinuxcfg + "default","w+")  or exit("无法打开文件!");
+        $default = "";
+        while(!feof($file))
+        {
+           $default += fgets($file);
+        }
+        echo $default;
     }
 }
