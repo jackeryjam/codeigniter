@@ -46,7 +46,9 @@ class Systems extends CI_Model {
         echo "changeDefault";
         while(!feof($file))
         {
-           $default += fgets($file);
+            $str = fgets($file);
+            echo $str."<br>";
+            $default += $str;
         }
         echo $default;
     }
