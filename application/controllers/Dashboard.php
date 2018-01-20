@@ -23,7 +23,6 @@ class Dashboard extends CI_Controller {
 
 	public function setDefaultAs($system_name)
 	{
-		$this->Systems->changeDefault($system_name); 
-		echo $system_name;
+		$this->Systems->changeDefault($system_name);
 	}
 }
