@@ -20,7 +20,7 @@ class Systems extends CI_Model {
         //把最后的一个换行符去掉，否则界面会多显示一个的
         echo $_dirs;
         echo strlen($_dirs);
-        $dirs = substr($dirs, strlen($_dirs)-1);
+        $dirs = substr($_dirs, strlen($_dirs)-1);
         echo $dirs;
         $res = explode("\n" ,$dirs);
         return $res;
