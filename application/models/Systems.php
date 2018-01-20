@@ -12,9 +12,6 @@ class Systems extends CI_Model {
     }
 
     public function listDir() {
-        $test = "123";
-        echo $test;
-        echo strlen($test);
         $str = "ls ".$this->ftp_root;
         $dirs = shell_exec($str);
         //把最后的一个换行符去掉，否则界面会多显示一个的
