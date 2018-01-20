@@ -1,5 +1,6 @@
 <main class="mdl-layout__content">
     <div class="page-content">
+        <?php print_r($systemlist);?>
         <?php foreach ($systemlist as $item): ?>
             <div class="my-mdl-card mdl-card mdl-shadow--2dp">
                 <div class="mdl-card__title">
