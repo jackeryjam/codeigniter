@@ -48,16 +48,17 @@ class Systems extends CI_Model {
         {
             $str = fgets($file);
             echo $str."<br>";
-            $default = $default.$str."\n";
+            $default = $default.$str;
         }
-        $isMatched = preg_match('{pub.*?sourse}', $default, $matches);
+        $isMatched = preg_match('{pub/.*?/sourse}', $default, $matches);
         var_dump($isMatched, $matches);
         echo "<br>";
         $target = 'pub/'.$systemName.'/sourse';
-        $default = preg_replace('{pub.*?sourse}',$target, $default);
+        $default = preg_replace('{pub/.*?/sourse}',$target, $default);
         $target = 'pub/'.$systemName.'/ks.cfg';
-        $default = preg_replace('{pub.*?ks.cfg}',$target, $default);
-        echo $default;
+        echo $default."<br><br>";
+        $default = preg_replace('{pub/.*?/ks.cfg}',$target, $default);
+        echo $default."<br><br>";
 
         $myfile = fopen($this->pxelinuxcfg."default", "w") or die("Unable to open file!");
         fwrite($myfile, $default);
