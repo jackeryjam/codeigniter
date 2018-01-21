@@ -61,11 +61,9 @@ class Systems extends CI_Model {
         $target = '/pub/'.$systemName.'/ks.cfg';
         $tmp = preg_replace('{/pub/.*?/ks.cfg}', $target, $matches[0]);
         $default = preg_replace('{ks=ftp://.*?/pub/.*?/ks.cfg}', $tmp, $default);
-
-        echo $default."<br><br>";
-
-        // $myfile = fopen($this->pxelinuxcfg."default", "w") or die("Unable to open file!");
-        // fwrite($myfile, $default);
-        // fclose($myfile);
+        
+        $myfile = fopen($this->pxelinuxcfg."default", "w") or die("Unable to open file!");
+        fwrite($myfile, $default);
+        fclose($myfile);
     }
 }
