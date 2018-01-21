@@ -48,10 +48,11 @@ class Systems extends CI_Model {
         {
             $str = fgets($file);
             echo $str."<br>";
-            $default = $default.$str."\n";
+            $default = $default.$str."\n"."<br>";
         }
         $isMatched = preg_match('{/pub/.*?/sourse/}', $default, $matches);
         var_dump($isMatched, $matches);
+        echo "<br>";
         $target = '/pub/'.$systemName.'/sourse';
         $default = preg_replace('{/pub/.*?/sourse/}',$target, $default);
         echo $default;
