@@ -55,13 +55,12 @@ class Systems extends CI_Model {
         $target = '/pub/'.$systemName.'/sourse';
         $tmp = preg_replace('{/pub/.*?/sourse}', $target, $matches[0]);
         echo $tmp."<br>";
-        preg_replace('{inst.stage2=ftp://.*?/pub/.*?/sourse}', $tmp, $default);
-        echo $default."<br><br>";
+        $default = preg_replace('{inst.stage2=ftp://.*?/pub/.*?/sourse}', $tmp, $default);
         
         $isMatched = preg_match('{ks=ftp://.*?/pub/.*?/ks.cfg}', $default, $matches);
         $target = '/pub/'.$systemName.'/ks.cfg';
         $tmp = preg_replace('{/pub/.*?/ks.cfg}', $target, $matches[0]);
-        preg_replace('{ks=ftp://.*?/pub/.*?/ks.cfg}', $tmp, $default);
+        $default = preg_replace('{ks=ftp://.*?/pub/.*?/ks.cfg}', $tmp, $default);
 
         echo $default."<br><br>";
 
