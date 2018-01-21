@@ -51,7 +51,8 @@ class Systems extends CI_Model {
             $default = $default.$str."\n";
         }
         $target = '/pub/'.$systemName.'/sourse';
-        $default = preg_replace('//pub/.*?/sourse/',$target, $default);
+        preg_match('/pub/.*?/sourse/', $default);
+        // $default = preg_replace('/pub/.*?/sourse/',$target, $default);
         echo $default;
     }
 }
