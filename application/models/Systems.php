@@ -50,8 +50,10 @@ class Systems extends CI_Model {
             echo $str."<br>";
             $default = $default.$str."\n";
         }
+        $isMatched = preg_match('//pub/.*?/sourse/', $default, $matches);
+        var_dump($isMatched, $matches);
         $target = '/pub/'.$systemName.'/sourse';
-        preg_match('/pub/', $default);
+        preg_match('/pub/.*?/sourse/', $default);
         // $default = preg_replace('/pub/.*?/sourse/',$target, $default);
         echo $default;
     }
