@@ -48,7 +48,7 @@ class Systems extends CI_Model {
         {
             $str = fgets($file);
             echo $str."<br>";
-            $default += $str;
+            $default = $default.$str;
         }
         echo $default;
     }
