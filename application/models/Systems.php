@@ -50,18 +50,20 @@ class Systems extends CI_Model {
             echo $str."<br>";
             $default = $default.$str;
         }
-        $isMatched = preg_match('{pub/.*?/sourse}', $default, $matches);
-        var_dump($isMatched, $matches);
-        echo "<br>";
-        $target = 'pub/'.$systemName.'/sourse';
-        $default = preg_replace('{pub/.*?/sourse}',$target, $default);
-        $target = 'pub/'.$systemName.'/ks.cfg';
-        echo $default."<br><br>";
-        $default = preg_replace('{pub/.*?/ks.cfg}',$target, $default);
+        $isMatched = preg_match('{inst.stage2=ftp://.*?/pub/.*?/sourse}', $default, $matches);
+        $target = '/pub/'.$systemName.'/sourse';
+        $tmp = preg_replace('{/pub/.*?/sourse}', $target, $matches[0]);
+        preg_replace('{inst.stage2=ftp://.*?/pub/.*?/sourse}', $tmp, $default);
+        
+        $isMatched = preg_match('{ks=ftp://.*?/pub/.*?/ks.cfg}', $default, $matches);
+        $target = '/pub/'.$systemName.'/ks.cfg';
+        $tmp = preg_replace('{/pub/.*?/ks.cfg}', $target, $matches[0]);
+        preg_replace('{ks=ftp://.*?/pub/.*?/ks.cfg}', $tmp, $default);
+
         echo $default."<br><br>";
 
-        $myfile = fopen($this->pxelinuxcfg."default", "w") or die("Unable to open file!");
-        fwrite($myfile, $default);
-        fclose($myfile);
+        // $myfile = fopen($this->pxelinuxcfg."default", "w") or die("Unable to open file!");
+        // fwrite($myfile, $default);
+        // fclose($myfile);
     }
 }
