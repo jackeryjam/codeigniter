@@ -33,7 +33,19 @@ class Systems extends CI_Model {
             else{
                 $item['isDefault'] = FALSE;
             }
-            $item['desc'] = "描述";
+            $filename = $this->ftp_root."/".$dirname."/desc.txt";
+            shell_exec("chmod 777 ".$filename);
+            $file = fopen($filename, "r");
+            if ($file == 0){
+                $item['desc'] = "没有相关描述";
+            } else {
+                $item['desc'] = "";
+                while(!feof($file))
+                {
+                    $str = fgets($file);
+                    $item['desc'] = $item['desc'].$str."<br>";
+                }
+            }
             array_push($res,$item);
         }
         return $res;
