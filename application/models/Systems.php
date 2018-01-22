@@ -34,17 +34,17 @@ class Systems extends CI_Model {
                 $item['isDefault'] = FALSE;
             }
             $filename = $this->ftp_root."/".$dirname."/desc.txt";
-            shell_exec("chmod 777 ".$filename);
-            $file = fopen($filename, "r");
-            if ($file == 0){
-                $item['desc'] = "没有相关描述";
-            } else {
+            // shell_exec("chmod 777 ".$filename);
+            if(file_exists($filename)){
+                $file = fopen($filename, "r");
                 $item['desc'] = "";
                 while(!feof($file))
                 {
                     $str = fgets($file);
                     $item['desc'] = $item['desc'].$str."<br>";
                 }
+            } else {
+                $item['desc'] = "没有相关描述";
             }
             array_push($res,$item);
         }
