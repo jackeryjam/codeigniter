@@ -8,9 +8,9 @@ class Systems extends CI_Model {
     {
         parent::__construct();
         $this->ftp_root = "/var/ftp/pub";
-        $this->default = "centos7";
         $this->pxelinuxcfg = "/var/lib/tftpboot/pxelinux.cfg/";
-        // Your own constructor code
+        $this->default = $this->getDefault();
+        echo $this->default."<br>";
     }
 
     public function listDir() {
@@ -47,7 +47,7 @@ class Systems extends CI_Model {
         while(!feof($file))
         {
             $str = fgets($file);
-            echo $str."<br>";
+            // echo $str."<br>";
             $default = $default.$str;
         }
         $isMatched = preg_match('{inst.stage2=ftp://.*?/pub/.*?/sourse}', $default, $matches);
@@ -67,5 +67,21 @@ class Systems extends CI_Model {
         fclose($myfile);
 
         header('Location: '. base_url().'index.php/dashboard');
+    }
+
+    public function getDefault(){
+        $file=fopen($this->pxelinuxcfg."default","r")  or exit("无法打开文件!");
+        $default = "";
+        echo $this->pxelinuxcfg."default"."<br>";
+        while(!feof($file))
+        {
+            $str = fgets($file);
+            $default = $default.$str;
+        }
+        preg_match('{inst.stage2=ftp://.*?/pub/.*?/sourse}', $default, $matches);
+        preg_match('{pub/.*?/sourse}', $matches[0], $matches);
+        preg_match('{/.*?/}', $matches[0], $matches);
+        $defaultSystem = substr($matches[0], 1, strlen($matches[0]) - 2);
+        return $defaultSystem;
     }
 }
