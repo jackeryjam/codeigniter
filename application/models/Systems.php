@@ -10,7 +10,6 @@ class Systems extends CI_Model {
         $this->ftp_root = "/var/ftp/pub";
         $this->pxelinuxcfg = "/var/lib/tftpboot/pxelinux.cfg/";
         $this->default = $this->getDefault();
-        echo $this->default."<br>";
     }
 
     public function listDir() {
@@ -43,7 +42,7 @@ class Systems extends CI_Model {
     public function changeDefault($systemName){
         $file=fopen($this->pxelinuxcfg."default","r")  or exit("无法打开文件!");
         $default = "";
-        echo $this->pxelinuxcfg."default"."<br>";
+        // echo $this->pxelinuxcfg."default"."<br>";
         while(!feof($file))
         {
             $str = fgets($file);
@@ -72,7 +71,7 @@ class Systems extends CI_Model {
     public function getDefault(){
         $file=fopen($this->pxelinuxcfg."default","r")  or exit("无法打开文件!");
         $default = "";
-        echo $this->pxelinuxcfg."default"."<br>";
+        // echo $this->pxelinuxcfg."default"."<br>";
         while(!feof($file))
         {
             $str = fgets($file);
