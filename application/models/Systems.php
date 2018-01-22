@@ -51,19 +51,21 @@ class Systems extends CI_Model {
             $default = $default.$str;
         }
         $isMatched = preg_match('{inst.stage2=ftp://.*?/pub/.*?/sourse}', $default, $matches);
-        print_r($matches);echo "<br>";
+        // print_r($matches);echo "<br>";
         $target = '/pub/'.$systemName.'/sourse';
         $tmp = preg_replace('{/pub/.*?/sourse}', $target, $matches[0]);
-        echo $tmp."<br>";
+        // echo $tmp."<br>";
         $default = preg_replace('{inst.stage2=ftp://.*?/pub/.*?/sourse}', $tmp, $default);
         
         $isMatched = preg_match('{ks=ftp://.*?/pub/.*?/ks.cfg}', $default, $matches);
         $target = '/pub/'.$systemName.'/ks.cfg';
         $tmp = preg_replace('{/pub/.*?/ks.cfg}', $target, $matches[0]);
         $default = preg_replace('{ks=ftp://.*?/pub/.*?/ks.cfg}', $tmp, $default);
-        
+
         $myfile = fopen($this->pxelinuxcfg."default", "w") or die("Unable to open file!");
         fwrite($myfile, $default);
         fclose($myfile);
+
+        header('Location: '. base_url().'index.php/dashboard');
     }
 }

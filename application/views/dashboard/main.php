@@ -27,7 +27,6 @@
 
 <script type="text/javascript">
     function setDefault($name){
-        console.log("+++++++++++++++++++++++")
         window.location.href="<?=base_url()?>"+"index.php/dashboard/setDefaultAs/"+$name;
     }    
 </script>
