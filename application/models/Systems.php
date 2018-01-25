@@ -34,15 +34,8 @@ class Systems extends CI_Model {
                 $item['isDefault'] = FALSE;
             }
             $filename = $this->ftp_root."/".$dirname."/desc.txt";
-            // shell_exec("chmod 777 ".$filename);
             if(file_exists($filename)){
-                $file = fopen($filename, "r");
-                $item['desc'] = "";
-                while(!feof($file))
-                {
-                    $str = fgets($file);
-                    $item['desc'] = $item['desc'].$str."<br>";
-                }
+                $item['desc'] = file_get_contents($filename);
             } else {
                 $item['desc'] = "没有相关描述";
             }
@@ -52,15 +45,7 @@ class Systems extends CI_Model {
     }
     
     public function changeDefault($systemName){
-        $file=fopen($this->pxelinuxcfg."default","r")  or exit("无法打开文件!");
-        $default = "";
-        // echo $this->pxelinuxcfg."default"."<br>";
-        while(!feof($file))
-        {
-            $str = fgets($file);
-            // echo $str."<br>";
-            $default = $default.$str;
-        }
+        $default = file_get_contents($this->pxelinuxcfg."default");
         $isMatched = preg_match('{inst.stage2=ftp://.*?/pub/.*?/sourse}', $default, $matches);
         // print_r($matches);echo "<br>";
         $target = '/pub/'.$systemName.'/sourse';
