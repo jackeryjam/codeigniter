@@ -81,14 +81,7 @@ class Systems extends CI_Model {
     }
 
     public function getDefault(){
-        $file=fopen($this->pxelinuxcfg."default","r")  or exit("无法打开文件!");
-        $default = "";
-        // echo $this->pxelinuxcfg."default"."<br>";
-        while(!feof($file))
-        {
-            $str = fgets($file);
-            $default = $default.$str;
-        }
+        $default = file_get_contents($this->pxelinuxcfg."default");
         preg_match('{inst.stage2=ftp://.*?/pub/.*?/sourse}', $default, $matches);
         preg_match('{pub/.*?/sourse}', $matches[0], $matches);
         preg_match('{/.*?/}', $matches[0], $matches);
