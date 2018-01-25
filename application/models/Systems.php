@@ -89,9 +89,7 @@ class Systems extends CI_Model {
             $str = fgets($file);
             $default = $default.$str;
         }
-        echo $default."<br><br><br>";
         preg_match('{inst.stage2=ftp://.*?/pub/.*?/sourse}', $default, $matches);
-        print_r($matches);
         preg_match('{pub/.*?/sourse}', $matches[0], $matches);
         preg_match('{/.*?/}', $matches[0], $matches);
         $defaultSystem = substr($matches[0], 1, strlen($matches[0]) - 2);
