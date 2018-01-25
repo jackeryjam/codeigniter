@@ -61,7 +61,7 @@ menu separator # insert an empty line
 label linux
   menu label ^Install CentOS Linux 7
   kernel vmlinuz
-  append initrd=initrd.img inst.stage2=ftp://10.0.1.222/pub/Centos7  ks=ftp://10.0.1.222/pub/ks.cfg  
+  append initrd=initrd.img inst.stage2=ftp://10.0.1.222/centos7/sourse  ks=ftp://10.0.1.222/pub/centos7/ks.cfg  
 
 
 menu separator # insert an empty line
