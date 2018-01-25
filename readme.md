@@ -11,6 +11,13 @@
 ### 访问
 安装之后url为服务器ip+这个文件的文件名即可，如http://192.168.126.131/codeigniter/
 
+### ftp文件目录
+默认目录为 /var/ftp/pub, 里面文件的存放形式为  
+*   systemname  
+    *   sourse   
+    *   ks.cfg  
+    *   desc.txt
+
 ### 更换默认安装系统
 在系统版面选择要更换的系统，之后设置为默认即可，该页面为/var/ftp/pub文件目录的映射，修改默认文件只是将append initrd=initrd.img inst.stage2=ftp://10.0.1.222/pub/<b>centos7</b>/sourse ks=ftp://10.0.1.222/pub/<b>centos7</b>/ks.cfg，加黑色粗体的centos7替换相应的系统
 
