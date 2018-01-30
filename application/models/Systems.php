@@ -73,4 +73,13 @@ class Systems extends CI_Model {
         $defaultSystem = substr($matches[0], 1, strlen($matches[0]) - 2);
         return $defaultSystem;
     }
+
+    public function getDefaultFtpIp(){
+        $default = file_get_contents($this->pxelinuxcfg."default");
+        preg_match('{inst.stage2=ftp://.*?/pub/.*?/sourse}', $default, $matches);
+        preg_match('{ftp://.*?/pub}', $matches[0], $matches);
+        preg_match('{//.*?/}', $matches[0], $matches);
+        $DefaultFtp = substr($matches[0], 2, strlen($matches[0]) - 3);
+        return $DefaultFtp;
+    }
 }
