@@ -32,11 +32,6 @@ class Api extends REST_Controller{
 		fwrite($myfile, $contents);
 		fclose($myfile);
 
-		$res['code'] = 200;
-		$res['msg'] = "half success"; 
-		$res['data'] = $data;
-		$this->response($res, 200);
-
 		if (move_uploaded_file($_FILES["system"]["tmp_name"], $this->root . $name . "/sourse.iso") == FALSE){
 			$res['code'] = 409;
 			$res['msg'] = "save system fail";
