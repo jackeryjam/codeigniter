@@ -1,6 +1,6 @@
 <main class="mdl-layout__content">
     <div class="upload_page-content">
-            <form class="my-mdl-card mdl-card mdl-shadow--2dp" action="http://192.168.126.134/system-auto-install/index.php/Api/upload" method="post">
+            <form class="my-mdl-card mdl-card mdl-shadow--2dp" action="http://192.168.126.134/system-auto-install/index.php/Api/upload" method="post" enctype="multipart/form-data">
                 <div class="mdl-card__title">
                     <h2 class="mdl-card__title-text">上传系统</h2>
                 </div>
@@ -12,17 +12,17 @@
 
                     <div class="mdl-textfield mdl-js-textfield file-field">
                         <input class="mdl-textfield__input" type="text" onclick="chooseCfg()">
-                        <!-- <input class="mdl-textfield__input mdl-filefield__input" type="file" name="cfg" id="config"> -->
+                        <input class="mdl-textfield__input mdl-filefield__input" type="file" name="cfg" id="config">
                         <label class="mdl-textfield__label" for="sample1">配置文件ks.cfg</label>
                     </div>
-                    <input class="mdl-textfield__input" type="file" name="cfg" id="config">
+                    <!-- <input class="mdl-textfield__input" type="file" name="cfg" id="config"> -->
 
                     <div class="mdl-textfield mdl-js-textfield file-field">
                         <input class="mdl-textfield__input" type="text" onclick="chooseSystem()">
-                        <!-- <input class="mdl-textfield__input mdl-filefield__input" type="file" id="system" name="system"> -->
+                        <input class="mdl-textfield__input mdl-filefield__input" type="file" id="system" name="system">
                         <label class="mdl-textfield__label" for="sample1">选择系统镜像</label>
                     </div>
-                    <input class="mdl-textfield__input " type="file" id="system" name="system">
+                    <!-- <input class="mdl-textfield__input " type="file" id="system" name="system"> -->
 
                     <div class="mdl-textfield mdl-js-textfield">
                         <textarea class="mdl-textfield__input" type="text" rows= "3" name="desc"></textarea>
