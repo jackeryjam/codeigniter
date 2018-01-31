@@ -54,7 +54,7 @@ class Api extends REST_Controller{
 		$data['exc'] = $str;
 		// $data['mount_res'] = ssh2_exec($connection, $str);
 		// $stream = ssh2_exec($connection, "ls /");
-		if(!($stream = ssh2_exec($connection, "ls /"))) {
+		if(!($stream = ssh2_exec($connection, $str))) {
 			$data['mount_res'] = "fail to exe";
 		} else {
 			stream_set_blocking($stream, true);	
