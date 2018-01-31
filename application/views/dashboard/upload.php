@@ -1,6 +1,6 @@
 <main class="mdl-layout__content">
     <div class="upload_page-content">
-            <form class="my-mdl-card mdl-card mdl-shadow--2dp" action="http://192.168.126.134/system-auto-install/index.php/Api/upload" method="post" enctype="multipart/form-data">
+            <form id="myForm" class="my-mdl-card mdl-card mdl-shadow--2dp" action="http://192.168.126.134/system-auto-install/index.php/Api/upload" method="post" enctype="multipart/form-data">
                 <div class="mdl-card__title">
                     <h2 class="mdl-card__title-text">上传系统</h2>
                 </div>
@@ -51,44 +51,46 @@
         console.log($("#config"));
     }
 
-   // $(function(){
-   //      // var bar = $('.bar');
-   //      // var percent = $('.percent');
-   //      // var status = $('#status');
-   //      $('form').ajaxForm({
-   //          beforeSubmit:function(){
-   //              //if($("#txt1").val()==""){return false;}//如：验证表单数据是否为空
-   //          },
-   //          beforeSend: function() {
-   //              // status.empty();
-   //              // var percentVal = '0%';
-   //              // bar.width(percentVal)
-   //              // percent.html(percentVal);
-   //          },
-   //          uploadProgress: function(event, position, total, percentComplete) {//上传的过程
-   //              //position 已上传了多少
-   //              //total 总大小
-   //              //已上传的百分数
-   //              // var percentVal = percentComplete + '%';
-   //              // bar.width(percentVal)
-   //              // percent.html(percentVal);
-   //              //console.log(percentVal, position, total);
-   //          },
-   //          success: function(data) {//成功
-   //              // var percentVal = '100%';
-   //              // bar.width(percentVal)
-   //              // percent.html(percentVal);
-   //              alert(data);
-   //          },
-   //          error:function(err){//失败
-   //              alert("表单提交异常！"+err.msg);
-   //          },
-   //          complete: function(xhr) {//完成
-   //              // status.html(xhr.responseText);
-   //          }
-   //      });
+   $(function(){
+        // var bar = $('.bar');
+        // var percent = $('.percent');
+        // var status = $('#status');
+        $('#myForm').ajaxForm({
+            beforeSubmit: function showRequest(formData, jqForm, options){
+               //formData: 数组对象，提交表单时，Form插件会以Ajax方式自动提交这些数据，格式如：[{name:user,value:val },{name:pwd,value:pwd}]
+               //jqForm:   jQuery对象，封装了表单的元素   
+               //options:  options对象
+               var queryString = $.param(formData);   //name=1&address=2
+               var formElement = jqForm[0];              //将jqForm转换为DOM对象
+               return true;  //只要不返回false，表单都会提交,在这里可以对表单元素进行验证
+            },
+            uploadProgress: function(event, position, total, percentComplete) {//上传的过程
 
-   //  });
+                console.log(uploadProgress)
+                //position 已上传了多少
+                //total 总大小
+                //已上传的百分数
+                // var percentVal = percentComplete + '%';
+                // bar.width(percentVal)
+                // percent.html(percentVal);
+                //console.log(percentVal, position, total);
+                return true;
+            },
+            success: function(data) {//成功
+                // var percentVal = '100%';
+                // bar.width(percentVal)
+                // percent.html(percentVal);
+                alert(data);
+            },
+            error:function(err){//失败
+                alert("表单提交异常！"+err.msg);
+            },
+            complete: function(xhr) {//完成
+                // status.html(xhr.responseText);
+            }
+        });
+
+    });
 
 </script>
           

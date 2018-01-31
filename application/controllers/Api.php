@@ -66,7 +66,7 @@ class Api extends REST_Controller{
 
 		$res['code'] = 200;
 		$res['msg'] = "success to save system"; 
-		$res['data'] = $_FILES;
+		$res['data'] = $data;
 		$this->response($res, 200);
 	}
 
