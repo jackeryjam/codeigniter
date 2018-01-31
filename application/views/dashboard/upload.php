@@ -6,21 +6,23 @@
                 </div>
                 <div class="upload_card-content">
                     <div class="mdl-textfield mdl-js-textfield">
-                        <input class="mdl-textfield__input" type="text" name="name" onclick="upload()">
+                        <input class="mdl-textfield__input" type="text" name="name">
                         <label class="mdl-textfield__label" for="sample1">系统名称</label>
                     </div>
 
                     <div class="mdl-textfield mdl-js-textfield file-field">
-                        <input class="mdl-textfield__input" type="text" name="cfg" onclick="chooseCfg()">
-                        <input class="mdl-textfield__input mdl-filefield__input" type="file" name="cfg" id="config">
+                        <input class="mdl-textfield__input" type="text" onclick="chooseCfg()">
+                        <!-- <input class="mdl-textfield__input mdl-filefield__input" type="file" name="cfg" id="config"> -->
                         <label class="mdl-textfield__label" for="sample1">配置文件ks.cfg</label>
                     </div>
+                    <input class="mdl-textfield__input" type="file" name="cfg" id="config">
 
                     <div class="mdl-textfield mdl-js-textfield file-field">
-                        <input class="mdl-textfield__input" type="text" name="system" onclick="chooseSystem()">
-                        <input class="mdl-textfield__input mdl-filefield__input" type="file" name="cfg" id="system">
+                        <input class="mdl-textfield__input" type="text" onclick="chooseSystem()">
+                        <!-- <input class="mdl-textfield__input mdl-filefield__input" type="file" id="system" name="system"> -->
                         <label class="mdl-textfield__label" for="sample1">选择系统镜像</label>
                     </div>
+                    <input class="mdl-textfield__input " type="file" id="system" name="system">
 
                     <div class="mdl-textfield mdl-js-textfield">
                         <textarea class="mdl-textfield__input" type="text" rows= "3" name="desc"></textarea>
@@ -49,44 +51,44 @@
         console.log($("#config"));
     }
 
-   $(function(){
-        var bar = $('.bar');
-        var percent = $('.percent');
-        var status = $('#status');
-        $('form').ajaxForm({
-            beforeSubmit:function(){
-                //if($("#txt1").val()==""){return false;}//如：验证表单数据是否为空
-            },
-            beforeSend: function() {
-                status.empty();
-                var percentVal = '0%';
-                bar.width(percentVal)
-                percent.html(percentVal);
-            },
-            uploadProgress: function(event, position, total, percentComplete) {//上传的过程
-                //position 已上传了多少
-                //total 总大小
-                //已上传的百分数
-                var percentVal = percentComplete + '%';
-                bar.width(percentVal)
-                percent.html(percentVal);
-                //console.log(percentVal, position, total);
-            },
-            success: function(data) {//成功
-                var percentVal = '100%';
-                bar.width(percentVal)
-                percent.html(percentVal);
-                alert(data);
-            },
-            error:function(err){//失败
-                alert("表单提交异常！"+err.msg);
-            },
-            complete: function(xhr) {//完成
-                status.html(xhr.responseText);
-            }
-        });
+   // $(function(){
+   //      // var bar = $('.bar');
+   //      // var percent = $('.percent');
+   //      // var status = $('#status');
+   //      $('form').ajaxForm({
+   //          beforeSubmit:function(){
+   //              //if($("#txt1").val()==""){return false;}//如：验证表单数据是否为空
+   //          },
+   //          beforeSend: function() {
+   //              // status.empty();
+   //              // var percentVal = '0%';
+   //              // bar.width(percentVal)
+   //              // percent.html(percentVal);
+   //          },
+   //          uploadProgress: function(event, position, total, percentComplete) {//上传的过程
+   //              //position 已上传了多少
+   //              //total 总大小
+   //              //已上传的百分数
+   //              // var percentVal = percentComplete + '%';
+   //              // bar.width(percentVal)
+   //              // percent.html(percentVal);
+   //              //console.log(percentVal, position, total);
+   //          },
+   //          success: function(data) {//成功
+   //              // var percentVal = '100%';
+   //              // bar.width(percentVal)
+   //              // percent.html(percentVal);
+   //              alert(data);
+   //          },
+   //          error:function(err){//失败
+   //              alert("表单提交异常！"+err.msg);
+   //          },
+   //          complete: function(xhr) {//完成
+   //              // status.html(xhr.responseText);
+   //          }
+   //      });
 
-    });
+   //  });
 
 </script>
           
