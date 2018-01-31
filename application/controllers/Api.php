@@ -20,6 +20,7 @@ class Api extends REST_Controller{
 		if (mkdir($this->root.$name) == FALSE) {
 			$res['code'] = 409;
 			$res['msg'] = "system name exist";
+			$res['msg'] =  $this->_post_args['name'];
 			$this->response($res, 409);
 		} 
 		if (move_uploaded_file($_FILES["cfg"]["tmp_name"], $this->root . $name . "/ks.cfg") == FALSE){
