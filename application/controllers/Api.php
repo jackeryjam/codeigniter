@@ -13,7 +13,7 @@ class Api extends REST_Controller{
 
 	public $root = "/var/ftp/pub/";
 
-	function upload_post($name){
+	function upload_post($name = null){
 		$res = array();
 		$data = array();
 		if($name == null) {
