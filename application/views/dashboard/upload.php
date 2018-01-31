@@ -52,44 +52,23 @@
     }
 
    $(function(){
-        // var bar = $('.bar');
-        // var percent = $('.percent');
-        // var status = $('#status');
         $('#myForm').ajaxForm({
-            beforeSubmit: function showRequest(formData, jqForm, options){
-               //formData: 数组对象，提交表单时，Form插件会以Ajax方式自动提交这些数据，格式如：[{name:user,value:val },{name:pwd,value:pwd}]
-               //jqForm:   jQuery对象，封装了表单的元素   
-               //options:  options对象
-               var queryString = $.param(formData);   //name=1&address=2
-               var formElement = jqForm[0];              //将jqForm转换为DOM对象
-               return true;  //只要不返回false，表单都会提交,在这里可以对表单元素进行验证
+            beforeSerialize: function($form, options) {
+                // return false to cancel submit
+                console.log('return false to cancel submit')
             },
-            uploadProgress: function(event, position, total, percentComplete) {//上传的过程
-
-                console.log(uploadProgress)
-                //position 已上传了多少
-                //total 总大小
-                //已上传的百分数
-                // var percentVal = percentComplete + '%';
-                // bar.width(percentVal)
-                // percent.html(percentVal);
-                //console.log(percentVal, position, total);
-                return true;
+            beforeSubmit: function(arr, $form, options) {
+                // form data array is an array of objects with name and value properties
+                // [ { name: 'username', value: 'jresig' }, { name: 'password', value: 'secret' } ]
+                // return false to cancel submit
+                console.log(arr)
             },
-            success: function(data) {//成功
-                // var percentVal = '100%';
-                // bar.width(percentVal)
-                // percent.html(percentVal);
-                alert(data);
-            },
-            error:function(err){//失败
-                alert("表单提交异常！"+err.msg);
-            },
-            complete: function(xhr) {//完成
-                // status.html(xhr.responseText);
+            delegation: true,
+            semantic: true,
+            uploadProgress: function(event, position, total, percentComplete){
+                console.log(percentComplete)
             }
         });
-
     });
 
 </script>
