@@ -20,7 +20,6 @@ class Api extends REST_Controller{
 		if (mkdir($this->root.$name) == FALSE) {
 			$res['code'] = 409;
 			$res['msg'] = "system name exist";
-			$res['msg'] =  $this->_post_args['name'];
 			$this->response($res, 409);
 		} 
 		if (move_uploaded_file($_FILES["cfg"]["tmp_name"], $this->root . $name . "/ks.cfg") == FALSE){
@@ -38,13 +37,22 @@ class Api extends REST_Controller{
 			$res['msg'] = "save system fail";
 			$this->response($res, 409);
 		}
+
+		$ipadd = "127.0.0.1";
+		$user = "root";
+		$pass = "test";
+		$connection = ssh2_connect($ipadd,22);  
+		if (!ssh2_auth_password($connection,$user,$pass))  
+		{
+			$data['ssh'] = "Authentication Failed...";  
+		}
+
+		
 		mkdir($this->root.$name."/sourse");
 		$str = 'mount '.$this->root.$name.'/sourse.iso  '.$this->root.$name.'/sourse';
 		$data['exc'] = $str;
-		$data['mount_res0'] = shell_exec($str);
-		sleep(1);
-		$data['mount_res1'] = shell_exec('mount /var/ftp/pub/test1/sourse.iso /var/ftp/pub/test1/sourse');
-		$data['mount_res2'] = shell_exec('mount --help');
+		$data['mount_res'] = ssh2_exec($str);
+
 		$res['code'] = 200;
 		$res['msg'] = "success to save system"; 
 		$res['data'] = $data;
