@@ -40,7 +40,9 @@ class Api extends REST_Controller{
 		$ipadd = "127.0.0.1";
 		$user = "root";
 		$pass = "test";
-		$connection = ssh2_connect($ipadd,22);  
+		if(!($connection = ssh2_connect($ipadd,22))){
+			$data['ssh_connect'] = "ssh connect fail";
+		}
 		if (!ssh2_auth_password($connection,$user,$pass))  
 		{
 			$data['ssh'] = "Authentication Failed...";  
@@ -50,8 +52,18 @@ class Api extends REST_Controller{
 		mkdir($this->root.$name."/sourse");
 		$str = 'mount -o loop '.$this->root.$name.'/sourse.iso  '.$this->root.$name.'/sourse';
 		$data['exc'] = $str;
-		$data['mount_res'] = ssh2_exec($str);
-		$data['test'] = ssh2_exec("ls /");
+		// $data['mount_res'] = ssh2_exec($connection, $str);
+		// $stream = ssh2_exec($connection, "ls /");
+		if(!($stream = ssh2_exec($connection, "ls /"))) {
+			$data['mount_res'] = "fail to exe";
+		} else {
+			stream_set_blocking($stream, true);	
+			$data['mount_res'] = "";
+			while ($buf = fread ($stream, 4096)){
+				$data['mount_res'] .= $buf;
+			}
+			fclose($stream);
+		}
 
 		$res['code'] = 200;
 		$res['msg'] = "success to save system"; 
