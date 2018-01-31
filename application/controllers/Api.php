@@ -8,6 +8,7 @@ class Api extends REST_Controller{
     {
         parent::__construct();
 		$this->load->helper('url');
+		header("Access-Control-Allow-Origin: *");
     }
 
 	public $root = "/var/ftp/pub/";

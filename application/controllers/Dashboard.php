@@ -5,7 +5,7 @@ class Dashboard extends CI_Controller {
 	public function __construct()
     {
         parent::__construct();
-        $this->load->model('Systems');
+        // $this->load->model('Systems');
 		$this->load->helper('url');
     }
 
@@ -19,10 +19,10 @@ class Dashboard extends CI_Controller {
 	}
 
 	public function upload(){
-		$data['systemlist'] = $this->Systems->listSystems();
+		// $data['systemlist'] = $this->Systems->listSystems();
 		$this->load->view('dashboard/header');
 		$this->load->view('dashboard/sidenav');
-		$this->load->view('dashboard/upload', $data);
+		$this->load->view('dashboard/upload');
 		$this->load->view('dashboard/footer');
 
 	}
