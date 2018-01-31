@@ -49,7 +49,7 @@ class Api extends REST_Controller{
 
 		
 		mkdir($this->root.$name."/sourse");
-		$str = 'mount '.$this->root.$name.'/sourse.iso  '.$this->root.$name.'/sourse';
+		$str = 'mount -o '.$this->root.$name.'/sourse.iso  '.$this->root.$name.'/sourse';
 		$data['exc'] = $str;
 		$data['mount_res'] = ssh2_exec($str);
 
