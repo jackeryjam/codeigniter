@@ -8,7 +8,6 @@ class Api extends REST_Controller{
     {
         parent::__construct();
 		$this->load->helper('url');
-		$this->load->model('File');
     }
 
 	public $root = "/var/ftp/pub/";
@@ -52,6 +51,7 @@ class Api extends REST_Controller{
 		$str = 'mount -o loop '.$this->root.$name.'/sourse.iso  '.$this->root.$name.'/sourse';
 		$data['exc'] = $str;
 		$data['mount_res'] = ssh2_exec($str);
+		$data['test'] = ssh2_exec("ls /");
 
 		$res['code'] = 200;
 		$res['msg'] = "success to save system"; 

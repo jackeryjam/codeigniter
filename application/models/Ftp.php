@@ -1,4 +1,5 @@
 <?php
+//这个现在用不着了，
 class Ftp extends CI_Model {
 	public $conn_id; 
 
