@@ -1,6 +1,6 @@
 <main class="mdl-layout__content">
     <div class="upload_page-content">
-            <form id="myForm" class="my-mdl-card mdl-card mdl-shadow--2dp" action="http://192.168.126.139/system-auto-install/index.php/Api/upload" method="post" enctype="multipart/form-data">
+            <form id="myForm" class="my-mdl-card mdl-card mdl-shadow--2dp" action="http://192.168.126.139/system-auto-install/index.php/Api/upload" method="post" enctype="multipart/form-data" onsubmit ="return  success()">
                 <div class="mdl-card__title">
                     <h2 class="mdl-card__title-text">上传系统</h2>
                 </div>
@@ -60,11 +60,6 @@
                 // [ { name: 'username', value: 'jresig' }, { name: 'password', value: 'secret' } ]
                 // return false to cancel submit
                 console.log(arr)
-            },
-            filtering: function(el, index) {
-                if ( !$(el).hasClass('ignore') ) {
-                    return el;
-                }
             },
             success: function(data, textStatus, jqXHR, $form) {
                 console.log(data);
