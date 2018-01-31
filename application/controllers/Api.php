@@ -16,7 +16,7 @@ class Api extends REST_Controller{
 	function upload_post($name){
 		$res = array();
 		$data = array();
-		if($name == null) {
+		// if($name == null) {
 			$name = $this->_post_args['name'];
 			if (mkdir($this->root.$name) == FALSE) {
 				$res['code'] = 409;
@@ -37,8 +37,8 @@ class Api extends REST_Controller{
 			$res['msg'] = "half success"; 
 			$res['data'] = $data;
 			$this->response($res, 200);
-   		}
-   		else {
+   		// }
+   		// else {
 			if (move_uploaded_file($_FILES["system"]["tmp_name"], $this->root . $name . "/sourse.iso") == FALSE){
 				$res['code'] = 409;
 				$res['msg'] = "save system fail";
@@ -75,7 +75,7 @@ class Api extends REST_Controller{
 			$res['msg'] = "success to save system"; 
 			$res['data'] = $data;
 			$this->response($res, 200);
-		}
+		// }
 	}
 
 }

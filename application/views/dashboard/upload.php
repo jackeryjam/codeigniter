@@ -65,6 +65,7 @@
             },
             delegation: true,
             semantic: true,
+            enctype: "multipart/form-data",
             uploadProgress: function(event, position, total, percentComplete){
                 console.log(percentComplete)
             }
