@@ -88,7 +88,7 @@
                 var percentVal = percentComplete + '%';
                 console.log(percentComplete)
                 document.querySelector('#progress').addEventListener('mdl-componentupgraded', function() {
-                    this.MaterialProgress.setProgress(percentComplete);
+                    this.MaterialProgress.setProgress(100);
                 });
             },
             success: function(data, textStatus, jqXHR, $form) {
