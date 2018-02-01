@@ -9,6 +9,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <link rel="stylesheet" href="<?php echo base_url();?>resourse/style/material/material.min.css">
         <script src="<?php echo base_url();?>resourse/style/material/material.min.js"></script>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <script src="<?php echo base_url();?>resourse/js/jquery-3.3.1.min.js"></script>
+        <script src="<?php echo base_url();?>resourse/js/jquery.form.js"></script>
     </head>
     <body>
         <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
