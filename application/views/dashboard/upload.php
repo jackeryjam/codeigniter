@@ -83,8 +83,7 @@
             },
             uploadProgress: function (event, position, total, percentComplete ) {
                 var percentVal = percentComplete + '%';
-                console.log(percentComplete)
-                $(".progressbar").css("width",percentVal);
+                $("#progress .progressbar").css("width",percentVal);
             },
             success: function(data, textStatus, jqXHR, $form) {
                 // 提交成功的话展示对话框提示
