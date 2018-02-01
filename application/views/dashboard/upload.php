@@ -76,10 +76,10 @@
                 console.log('return false to cancel submit')
             },
             beforeSubmit: function(arr, $form, options) {
-                systemname = arr[name];
+                systemname = arr[0].name;
                 var snackbarContainer = document.querySelector('#demo-snackbar-example');
                 var data = {
-                    message: 'System is uploading, never leave this page!',
+                    message: '系统上传中，请不要离开此页面，进度可看左下角',
                     timeout: 2000,
                     actionText: 'GET'
                 };
