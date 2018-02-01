@@ -79,7 +79,7 @@
                 systemname = arr[0].name;
                 var snackbarContainer = document.querySelector('#demo-snackbar-example');
                 var data = {
-                    message: '系统上传中，请不要离开此页面，进度可看左下角',
+                    message: '系统上传中，请不要离开此页面',
                     timeout: 2000,
                     actionText: 'GET'
                 };
@@ -108,7 +108,7 @@
         });
         $('#system').change(function(){
             var f = document.getElementById("system").files; 
-            $('#systemText').html(f[0].name)
+            $('#systemText').html(f[0].value)
         });
     });
 
