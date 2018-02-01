@@ -17,7 +17,7 @@
                 <div class="mdl-textfield mdl-js-textfield file-field">
                     <input class="mdl-textfield__input" type="text" id="systemInput" onclick="chooseSystem()">
                     <input class="mdl-textfield__input mdl-filefield__input ignore" type="file" id="system" name="system">
-                    <label class="mdl-textfield__label" for="systemInput" id="systemText">选择系统镜像</label>
+                    <label class="mdl-textfield__label" for="systemInput" id="systemText">选择系统镜像，请选择iso文件</label>
                 </div>
                 <div class="mdl-textfield mdl-js-textfield">
                     <textarea class="mdl-textfield__input" type="text" rows= "3" name="desc"></textarea>

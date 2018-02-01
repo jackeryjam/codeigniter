@@ -3,15 +3,9 @@
 require APPPATH.'/libraries/REST_Controller.php';
 
 class Api extends REST_Controller{
-
-	public function __construct()
-    {
-        parent::__construct();
-		$this->load->helper('url');
-		header("Access-Control-Allow-Origin: *");
-    }
-
 	public $root = "/var/ftp/pub/";
+	public $user = "root";	
+	public $pass = "";	//本机root账号的密码
 
 	function upload_post(){
 		$res = array();
@@ -38,19 +32,18 @@ class Api extends REST_Controller{
 			$this->response($res, 409);
 		}
 
-		$ipadd = "127.0.0.1";
-		$user = "root";
-		$pass = "test";
-		if(!($connection = ssh2_connect($ipadd,22))){
+		// ssh2连接本地
+		if(!($connection = ssh2_connect("127.0.0.1",22))){
 			$data['ssh_connect'] = "ssh connect fail";
 		}
-		if (!ssh2_auth_password($connection,$user,$pass))  
+		if (!ssh2_auth_password($connection,$this->user,$this->pass))  
 		{
 			$data['ssh'] = "Authentication Failed...";  
 		}
 
-		
+		// 创建对应的sourse文件夹用来挂载iso文件
 		mkdir($this->root.$name."/sourse");
+		// 将sourse.iso文件挂载到sourse
 		$str = 'mount -o loop '.$this->root.$name.'/sourse.iso  '.$this->root.$name.'/sourse';
 		$data['exc'] = $str;
 		if(!($stream = ssh2_exec($connection, $str))) {
