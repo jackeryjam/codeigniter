@@ -36,15 +36,15 @@
         </form>
     </div>
     <dialog class="mdl-dialog">
-        <h4 class="mdl-dialog__title">上传系统成功</h4>
+        <h4 class="mdl-dialog__title">上传系统成功，是否将该系统设置为默认</h4>
         <div class="mdl-dialog__content">
-            <p>
+            <!-- <p>
                 是否将该系统设置为默认
-            </p>
+            </p> -->
         </div>
         <div class="mdl-dialog__actions">
-            <button type="button" class="mdl-button close" id="agreebtn">Agree</button>
-            <button type="button" class="mdl-button close" id="disagreebtn">Disagree</button>
+            <button type="button" class="mdl-button close" id="agreebtn">好的</button>
+            <button type="button" class="mdl-button close" id="disagreebtn">不用了</button>
         </div>
     </dialog>
     <div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar">
