@@ -32,9 +32,4 @@ class Dashboard extends CI_Controller {
 		$this->Systems->changeDefault($system_name);
 	}
 
-	public function test(){
-		// system("sudo ./route.sh $ip",$status); 
-		echo "helloa";
-		echo shell_exec('mount /var/ftp/pub/test1/sourse.iso /var/ftp/pub/test1/sourse');
-	}
 }
