@@ -24,7 +24,7 @@
                     <label class="mdl-textfield__label" for="sample5">系统相关介绍说明</label>
                 </div>
                 <div>
-                    <div id="p1" class="mdl-progress mdl-js-progress"></div>
+                    <div id="progress" class="mdl-progress mdl-js-progress"></div>
                 </div>
                 
             </div>
@@ -68,6 +68,9 @@
 
    var systemname = ""; //用来记录系统的名称，后面设置为默认时候需要该变量，上传前(beforeSubmit)设置该值
    $(function(){
+        document.querySelector('#progress').addEventListener('mdl-componentupgraded', function() {
+            this.MaterialProgress.setProgress(50);
+        });
         var dialog = document.querySelector('dialog');
         // ajaxForm把表单变成异步提交
         $('#myForm').ajaxForm({
@@ -83,8 +86,8 @@
             },
             uploadProgress: function (event, position, total, percentComplete ) {
                 var percentVal = percentComplete + '%';
-                console.log(percentVal)
-                document.querySelector('#p1').addEventListener('mdl-componentupgraded', function() {
+                console.log(percentComplete)
+                document.querySelector('#progress').addEventListener('mdl-componentupgraded', function() {
                     this.MaterialProgress.setProgress(percentComplete);
                 });
             },
