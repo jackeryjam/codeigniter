@@ -76,7 +76,7 @@
                 console.log('return false to cancel submit')
             },
             beforeSubmit: function(arr, $form, options) {
-                systemname = arr[0].name;
+                systemname = arr[0].value;
                 var snackbarContainer = document.querySelector('#demo-snackbar-example');
                 var data = {
                     message: '系统上传中，请不要离开此页面',
@@ -100,8 +100,7 @@
         });
         dialog.querySelector('#agreebtn').addEventListener('click', function() {
             dialog.close();
-            console.log( "<?=base_url()?>"+"index.php/dashboard/setDefaultAs/" + systemname)
-            // window.location.href = "<?=base_url()?>"+"index.php/dashboard/setDefaultAs/" + systemname;
+            window.location.href = "<?=base_url()?>"+"index.php/dashboard/setDefaultAs/" + systemname;
         });
         $('#config').change(function(){
             var f = document.getElementById("config").files; 
