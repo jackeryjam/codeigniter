@@ -32,7 +32,7 @@
         </form>
     </div>
     <dialog class="mdl-dialog">
-        <h4 class="mdl-dialog__title" id="dialog_tite"></h4>
+        <h4 class="mdl-dialog__title" id="dialog_title"></h4>
         <div class="mdl-dialog__content"><p id="dialog_content"></p></div>
         <div class="mdl-dialog__actions">
             <button type="button" class="mdl-button close" id="agreebtn">好的</button>

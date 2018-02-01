@@ -40,7 +40,7 @@ class Api extends REST_Controller{
 		{
 			$res['code'] = 401;
 			$res['msg'] = "执行ssh2连接的密码错误";
-			$this->response($res, 200);
+			$this->response($res, 401);
 		}
 
 		// 创建对应的sourse文件夹用来挂载iso文件
@@ -59,6 +59,7 @@ class Api extends REST_Controller{
 			fclose($stream);
 		}
 
+		//成功上传和挂载系统，返回相应信息
 		$res['code'] = 200;
 		$res['msg'] = "success to save system"; 
 		$res['data'] = $data;
