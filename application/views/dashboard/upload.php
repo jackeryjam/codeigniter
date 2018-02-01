@@ -32,12 +32,8 @@
         </form>
     </div>
     <dialog class="mdl-dialog">
-        <h4 class="mdl-dialog__title">上传系统成功</h4>
-        <div class="mdl-dialog__content">
-            <p>
-                是否将该系统设置为默认
-            </p>
-        </div>
+        <h4 class="mdl-dialog__title" id="dialog_tite"></h4>
+        <div class="mdl-dialog__content"><p id="dialog_content"></p></div>
         <div class="mdl-dialog__actions">
             <button type="button" class="mdl-button close" id="agreebtn">好的</button>
             <button type="button" class="mdl-button close" id="disagreebtn">不用了</button>
@@ -88,16 +84,24 @@
             // },
             success: function(data, textStatus, jqXHR, $form) {
                 // 提交成功的话展示对话框提示
+                $("#dialog_title").html("上传系统成功")
+                $("#dialog_content").html("是否将该系统设置为默认")
+                dialog.querySelector('#agreebtn').addEventListener('click', function() {
+                    // dialog.close();
+                    //如果同意就将上传的系统设置为默认系统
+                    window.location.href = "<?=base_url()?>"+"index.php/dashboard/setDefaultAs/" + systemname;
+                });
+                dialog.showModal();
+            },
+            error: function(data, textStatus, jqXHR, $form) {
+                $("#dialog_title").html("上传失败")
+                $("#dialog_content").html(data.msg)
                 dialog.showModal();
             }
         });
         // 弹框按钮添加弹窗关闭的效果
         dialog.querySelector('#disagreebtn').addEventListener('click', function() { dialog.close() });
-        dialog.querySelector('#agreebtn').addEventListener('click', function() {
-            dialog.close();
-            //如果同意就将上传的系统设置为默认系统
-            window.location.href = "<?=base_url()?>"+"index.php/dashboard/setDefaultAs/" + systemname;
-        });
+        dialog.querySelector('#agreebtn').addEventListener('click', function() { dialog.close() });
     });
 </script>
           

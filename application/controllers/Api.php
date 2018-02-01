@@ -5,7 +5,7 @@ require APPPATH.'/libraries/REST_Controller.php';
 class Api extends REST_Controller{
 	public $root = "/var/ftp/pub/";
 	public $user = "root";	
-	public $pass = "";	//本机root账号的密码
+	public $pass = "test";	//本机root账号的密码
 
 	function upload_post(){
 		$res = array();
@@ -38,7 +38,9 @@ class Api extends REST_Controller{
 		}
 		if (!ssh2_auth_password($connection,$this->user,$this->pass))  
 		{
-			$data['ssh'] = "Authentication Failed...";  
+			$res['code'] = 401;
+			$res['msg'] = "执行ssh2连接的密码错误";
+			$this->response($res, 200);
 		}
 
 		// 创建对应的sourse文件夹用来挂载iso文件
