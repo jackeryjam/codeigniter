@@ -86,6 +86,7 @@
                 var percentVal = percentComplete + '%';
                 console.log(percentComplete)
                 progressbar.addEventListener('mdl-componentupgraded', function() {
+                    console.log("+++++++++++++++++++=")
                     this.MaterialProgress.setProgress(percentComplete);
                 });
             },
