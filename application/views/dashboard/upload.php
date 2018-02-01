@@ -1,43 +1,61 @@
 <main class="mdl-layout__content">
     <div class="upload_page-content">
-            <form id="myForm" class="my-mdl-card mdl-card mdl-shadow--2dp" action="http://192.168.126.139/system-auto-install/index.php/Api/upload" method="post" enctype="multipart/form-data" onsubmit ="return  success()">
-                <div class="mdl-card__title">
-                    <h2 class="mdl-card__title-text">上传系统</h2>
+        <form id="myForm" class="my-mdl-card mdl-card mdl-shadow--2dp" action="<?=base_url()?>/index.php/Api/upload" method="post" enctype="multipart/form-data">
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">上传系统</h2>
+            </div>
+            <div class="upload_card-content">
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" type="text" name="name">
+                    <label class="mdl-textfield__label" for="sample1">系统名称</label>
                 </div>
-                <div class="upload_card-content">
-                    <div class="mdl-textfield mdl-js-textfield">
-                        <input class="mdl-textfield__input" type="text" name="name">
-                        <label class="mdl-textfield__label" for="sample1">系统名称</label>
-                    </div>
 
-                    <div class="mdl-textfield mdl-js-textfield file-field">
-                        <input class="mdl-textfield__input" type="text" onclick="chooseCfg()">
-                        <input class="mdl-textfield__input mdl-filefield__input" type="file" name="cfg" id="config">
-                        <label class="mdl-textfield__label" for="sample1">配置文件ks.cfg</label>
-                    </div>
-
-                    <div class="mdl-textfield mdl-js-textfield file-field">
-                        <input class="mdl-textfield__input" type="text" onclick="chooseSystem()">
-                        <input class="mdl-textfield__input mdl-filefield__input ignore" type="file" id="system" name="system">
-                        <label class="mdl-textfield__label" for="sample1">选择系统镜像</label>
-                    </div>
-
-                    <div class="mdl-textfield mdl-js-textfield">
-                        <textarea class="mdl-textfield__input" type="text" rows= "3" name="desc"></textarea>
-                        <label class="mdl-textfield__label" for="sample5">系统相关介绍说明</label>
-                    </div>
-
+                <div class="mdl-textfield mdl-js-textfield file-field">
+                    <input class="mdl-textfield__input" type="text" onclick="chooseCfg()" id='configInput'>
+                    <input class="mdl-textfield__input mdl-filefield__input" type="file" name="cfg" id="config">
+                    <label class="mdl-textfield__label" for="configInput"  id='configText'>配置文件ks.cfg</label>
                 </div>
-                <div class="flex-right mdl-card__actions mdl-card--border">
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit">
-                        上传
-                    </button>
+
+                <div class="mdl-textfield mdl-js-textfield file-field">
+                    <input class="mdl-textfield__input" type="text" id="systemInput" onclick="chooseSystem()">
+                    <input class="mdl-textfield__input mdl-filefield__input ignore" type="file" id="system" name="system">
+                    <label class="mdl-textfield__label" for="systemInput" id="systemText">选择系统镜像</label>
                 </div>
-            </form>
+
+                <div class="mdl-textfield mdl-js-textfield">
+                    <textarea class="mdl-textfield__input" type="text" rows= "3" name="desc"></textarea>
+                    <label class="mdl-textfield__label" for="sample5">系统相关介绍说明</label>
+                </div>
+
+            </div>
+            <div class="flex-right mdl-card__actions mdl-card--border">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit">
+                    上传
+                </button>
+            </div>
+        </form>
+    </div>
+    <dialog class="mdl-dialog">
+        <h4 class="mdl-dialog__title">上传系统成功</h4>
+        <div class="mdl-dialog__content">
+            <p>
+                是否将该系统设置为默认
+            </p>
+        </div>
+        <div class="mdl-dialog__actions">
+            <button type="button" class="mdl-button close" id="agreebtn">Agree</button>
+            <button type="button" class="mdl-button close" id="disagreebtn">Disagree</button>
+        </div>
+    </dialog>
+    <div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar">
+        <div class="mdl-snackbar__text"></div>
+        <button class="mdl-snackbar__action" type="button"></button>
     </div>
 </main>
 
 <script type="text/javascript">
+    var systemname = "";
+
     function chooseCfg(){
         $("#config").click();
     }
@@ -45,25 +63,51 @@
     function chooseSystem(){
         $("#system").click();
     }
+
     function upload(){
         console.log($("#config"));
     }
 
    $(function(){
+        var dialog = document.querySelector('dialog');
         $('#myForm').ajaxForm({
             beforeSerialize: function($form, options) {
                 // return false to cancel submit
                 console.log('return false to cancel submit')
             },
             beforeSubmit: function(arr, $form, options) {
-                // form data array is an array of objects with name and value properties
-                // [ { name: 'username', value: 'jresig' }, { name: 'password', value: 'secret' } ]
-                // return false to cancel submit
+                systemname = arr[name];
+                var snackbarContainer = document.querySelector('#demo-snackbar-example');
+                var data = {
+                    message: 'System is uploading, never leave this page!',
+                    timeout: 2000,
+                    actionText: 'GET'
+                };
+                snackbarContainer.MaterialSnackbar.showSnackbar(data);
                 console.log(arr)
             },
+            // uploadProgress: function (event, position, total, percentComplete ) {
+                
+            // },
             success: function(data, textStatus, jqXHR, $form) {
                 console.log(data);
+                dialog.showModal();
             }
+        });
+        dialog.querySelector('#disagreebtn').addEventListener('click', function() {
+            dialog.close();
+        });
+        dialog.querySelector('#agreebtn').addEventListener('click', function() {
+            dialog.close();
+            window.location.href = "<?=base_url()?>"+"index.php/dashboard/setDefaultAs/" + systemname;
+        });
+        $('#config').change(function(){
+            var f = document.getElementById("config").files; 
+            $('#configText').html(f[0].name)
+        });
+        $('#system').change(function(){
+            var f = document.getElementById("system").files; 
+            $('#systemText').html(f[0].name)
         });
     });
 
