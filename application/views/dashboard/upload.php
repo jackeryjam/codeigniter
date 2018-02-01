@@ -81,7 +81,9 @@
             // 这个方法是用来监听上传进度的，但是一写就会产生405的错误，尚未解决，别人是可以的，
             // http://blog.csdn.net/qq_28602957/article/details/53612885
             // https://github.com/jquery-form/form#uploadprogress
-                console.log("hello")
+                var percentVal = percentComplete + '%';
+                console.log(percentVal)
+                //console.log(percentVal, position, total);
             },
             success: function(data, textStatus, jqXHR, $form) {
                 // 提交成功的话展示对话框提示
