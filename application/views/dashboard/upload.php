@@ -105,10 +105,12 @@
         $('#config').change(function(){
             var f = document.getElementById("config").files; 
             $('#configText').html(f[0].name)
+            $('#configText').css("color","black");
         });
         $('#system').change(function(){
             var f = document.getElementById("system").files; 
             $('#systemText').html(f[0].value)
+            $('#systemText').css("color","black");
         });
     });
 
