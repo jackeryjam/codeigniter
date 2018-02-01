@@ -83,8 +83,9 @@
             },
             uploadProgress: function (event, position, total, percentComplete ) {
                 var percentVal = percentComplete + '%';
+                console.log(percentVal)
                 document.querySelector('#p1').addEventListener('mdl-componentupgraded', function() {
-                    this.MaterialProgress.setProgress(percentVal);
+                    this.MaterialProgress.setProgress(percentComplete);
                 });
             },
             success: function(data, textStatus, jqXHR, $form) {
