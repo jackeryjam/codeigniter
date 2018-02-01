@@ -69,7 +69,6 @@
    var systemname = ""; //用来记录系统的名称，后面设置为默认时候需要该变量，上传前(beforeSubmit)设置该值
    $(function(){
         var dialog = document.querySelector('dialog');
-        var progressbar = document.querySelector('#progress');
         // ajaxForm把表单变成异步提交
         $('#myForm').ajaxForm({
             beforeSubmit: function(arr, $form, options) {
@@ -85,10 +84,7 @@
             uploadProgress: function (event, position, total, percentComplete ) {
                 var percentVal = percentComplete + '%';
                 console.log(percentComplete)
-                progressbar.addEventListener('mdl-componentupgraded', function() {
-                    console.log("+++++++++++++++++++=")
-                    this.MaterialProgress.setProgress(percentComplete);
-                });
+                $(".progressbar").css("width",percentVal);
             },
             success: function(data, textStatus, jqXHR, $form) {
                 // 提交成功的话展示对话框提示
