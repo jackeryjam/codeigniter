@@ -100,7 +100,8 @@
         });
         dialog.querySelector('#agreebtn').addEventListener('click', function() {
             dialog.close();
-            window.location.href = "<?=base_url()?>"+"index.php/dashboard/setDefaultAs/" + systemname;
+            console.log( "<?=base_url()?>"+"index.php/dashboard/setDefaultAs/" + systemname)
+            // window.location.href = "<?=base_url()?>"+"index.php/dashboard/setDefaultAs/" + systemname;
         });
         $('#config').change(function(){
             var f = document.getElementById("config").files; 
@@ -109,7 +110,7 @@
         });
         $('#system').change(function(){
             var f = document.getElementById("system").files; 
-            $('#systemText').html(f[0].value)
+            $('#systemText').html(f[0].name)
             $('#systemText').css("color","black");
         });
     });
