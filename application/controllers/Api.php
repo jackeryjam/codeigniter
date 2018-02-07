@@ -8,26 +8,19 @@ class Api extends REST_Controller{
 	public $pass = "test";	//本机root账号的密码
 
 	function upload_post(){
-		// ssh2连接本地
-		if(!($connection = ssh2_connect("127.0.0.1",22))){
-			$data['ssh_connect'] = "ssh connect fail";
-		}
-		if (!ssh2_auth_password($connection,$this->user,$this->pass))  
-		{
-			$res['code'] = 401;
-			$res['msg'] = "执行ssh2连接的密码错误";
-			$this->response($res, 401);
-		}
-
 		$res = array();
 		$data = array();
 		$name = $this->_post_args['name'];
-		if (file_exists($this->root.$name)) {
-			$res['code'] = 409;
-			$res['msg'] = "system name exist";
+		try{
+			if (mkdir($this->root.$name) == FALSE) {
+				$res['code'] = 409;
+				$res['msg'] = "system name exist";
+				$this->response($res, 409);
+			} 
+		} catch(Exception $e) {
+			$res['msg'] = $e->getMessage();
 			$this->response($res, 409);
-		} 
-		ssh2_exec("mkdir ".$this->root.$name);
+		}
 		if (move_uploaded_file($_FILES["cfg"]["tmp_name"], $this->root . $name . "/ks.cfg") == FALSE){
 			$res['code'] = 409;
 			$res['msg'] = "save cfg fail";
@@ -42,6 +35,17 @@ class Api extends REST_Controller{
 			$res['code'] = 409;
 			$res['msg'] = "save system fail";
 			$this->response($res, 409);
+		}
+
+		// ssh2连接本地
+		if(!($connection = ssh2_connect("127.0.0.1",22))){
+			$data['ssh_connect'] = "ssh connect fail";
+		}
+		if (!ssh2_auth_password($connection,$this->user,$this->pass))  
+		{
+			$res['code'] = 401;
+			$res['msg'] = "执行ssh2连接的密码错误";
+			$this->response($res, 401);
 		}
 
 		// 创建对应的sourse文件夹用来挂载iso文件
