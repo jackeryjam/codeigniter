@@ -13,6 +13,7 @@ class Api extends REST_Controller{
 		$name = $this->_post_args['name'];
 		try{
 			if (mkdir($this->root.$name) == FALSE) {
+				$res['path'] = $this->root.$name;
 				$res['code'] = 409;
 				$res['msg'] = "system name exist";
 				$this->response($res, 409);
