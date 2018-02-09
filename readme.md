@@ -11,7 +11,11 @@
     参考http://blog.csdn.net/gb4215287/article/details/50709246
 *   安装php ssh2扩展
     参考 http://blog.csdn.net/github_26672553/article/details/50407639
-
+*   SElinuxh会阻止php创建文件夹等一下操作
+    修改/etc/selinux/config文件中的SELINUX="" 为 disabled，或者permissive（这个就降低安全等级而已），然后重启 如果不想重启系统，使用命令setenforce 0
+    注：
+    setenforce 1 设置SELinux 成为enforcing模式
+    setenforce 0 设置SELinux 成为permissive模式
 ### 安装步骤
 *   将该文件克隆或者下载之后，放置在apache的根目录下(默认是/var/www/html) 
 *   最后需要在application/conrollers/Api 里面的$pass改成所在linux的账号和密码，用于ssh2登录，最好是root的账号和密码
