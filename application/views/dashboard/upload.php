@@ -23,6 +23,10 @@
                     <textarea class="mdl-textfield__input" type="text" rows= "3" name="desc"></textarea>
                     <label class="mdl-textfield__label" for="sample5">系统相关介绍说明</label>
                 </div>
+                <div>
+                    <div id="progress" class="mdl-progress mdl-js-progress"></div>
+                </div>
+                
             </div>
             <div class="flex-right mdl-card__actions mdl-card--border">
                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit">
@@ -77,11 +81,10 @@
                 };
                 snackbarContainer.MaterialSnackbar.showSnackbar(data);
             },
-            // uploadProgress: function (event, position, total, percentComplete ) {
-            // 这个方法是用来监听上传进度的，但是一写就会产生405的错误，尚未解决，别人是可以的，
-            // http://blog.csdn.net/qq_28602957/article/details/53612885
-            // https://github.com/jquery-form/form#uploadprogress
-            // },
+            uploadProgress: function (event, position, total, percentComplete ) {
+                var percentVal = percentComplete + '%';
+                $("#progress .progressbar").css("width",percentVal);
+            },
             success: function(data, textStatus, jqXHR, $form) {
                 // 提交成功的话展示对话框提示
                 $("#dialog_title").html("上传系统成功")
@@ -132,5 +135,8 @@
         overflow: hidden;
         z-index: 1;
         padding: 0;
+    }
+    .upload_card-content .mdl-progress{
+        width: 100%;
     }
 </style>

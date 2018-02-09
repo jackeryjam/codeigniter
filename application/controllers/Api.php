@@ -11,11 +11,17 @@ class Api extends REST_Controller{
 		$res = array();
 		$data = array();
 		$name = $this->_post_args['name'];
-		if (mkdir($this->root.$name) == FALSE) {
-			$res['code'] = 409;
-			$res['msg'] = "system name exist";
+		try{
+			if (mkdir($this->root.$name) == FALSE) {
+				$res['path'] = $this->root.$name;
+				$res['code'] = 409;
+				$res['msg'] = "system name exist";
+				$this->response($res, 409);
+			} 
+		} catch(Exception $e) {
+			$res['err'] = $e->getMessage();
 			$this->response($res, 409);
-		} 
+		}
 		if (move_uploaded_file($_FILES["cfg"]["tmp_name"], $this->root . $name . "/ks.cfg") == FALSE){
 			$res['code'] = 409;
 			$res['msg'] = "save cfg fail";
